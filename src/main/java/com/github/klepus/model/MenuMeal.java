@@ -7,7 +7,7 @@ public class MenuMeal {
     public MenuMeal() {
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meal_id")
     private Meal meal;
 
