@@ -1,9 +1,10 @@
-package com.github.klepus.web.meal;
+package com.github.klepus.web;
 
 import com.github.klepus.TestUtil;
 import com.github.klepus.model.Meal;
 import com.github.klepus.service.meal.MealService;
 import com.github.klepus.web.*;
+import com.github.klepus.web.controller.MealRestController;
 import com.github.klepus.web.json.JsonUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

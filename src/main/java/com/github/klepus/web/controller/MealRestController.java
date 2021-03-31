@@ -1,4 +1,4 @@
-package com.github.klepus.web.meal;
+package com.github.klepus.web.controller;
 
 import com.github.klepus.model.Meal;
 import com.github.klepus.service.meal.MealService;
@@ -16,7 +16,7 @@ import static com.github.klepus.util.ValidationUtil.assureIdConsistent;
 @RestController
 @RequestMapping(value = MealRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
-    public static final String REST_URL = "/rest/meal";
+    public static final String REST_URL = "/rest/admin/meal";
 
     @Autowired
     private MealService service;
@@ -53,3 +53,4 @@ public class MealRestController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 }
+

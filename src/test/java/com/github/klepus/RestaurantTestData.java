@@ -6,6 +6,7 @@ import com.github.klepus.to.restaurant.RestaurantTo;
 import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static com.github.klepus.MealTestData.*;
 import static com.github.klepus.model.AbstractBaseEntity.START_SEQ;
@@ -24,6 +25,7 @@ public class RestaurantTestData {
     public static final RestaurantTo RESTAURANT3_TO = new RestaurantTo(RESTAURANT_ID3, "Французкий");
 
     public static final LocalDate DATE = LocalDate.of(2018, 1, 1);
+    public static final String DATE_STR = DATE.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
     public static final MealWithPriceTo RESTAURANT1_MEAL1 = new MealWithPriceTo(MEAL2.getId(), MEAL2.getName(), 150);
     public static final MealWithPriceTo RESTAURANT1_MEAL2 = new MealWithPriceTo(MEAL1.getId(), MEAL1.getName(), 100);
