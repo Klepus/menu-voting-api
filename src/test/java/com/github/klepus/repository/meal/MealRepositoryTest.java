@@ -17,35 +17,44 @@ public class MealRepositoryTest extends AbstractRepositoryTest {
     private MealRepository repository;
 
     @Test
-    public void save() {
-        Meal meal = repository.save(new Meal("ааа"));
-        assertMatch(meal, repository.get(meal.getId()));
-        assertMatch(repository.getAll(), Arrays.asList(meal, MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
+    public void testCreate() {
+        Meal created = repository.save(new Meal("ааа"));
+        assertMatch(created, repository.get(created.getId()));
+        assertMatch(repository.getAll(), Arrays.asList(created, MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
     }
 
     @Test
-    public void get() {
+    public void testUpdate() {
+        Meal updated = new Meal(MEAL1);
+        updated.setName("новое имя блюда");
+        Meal actualUpdated = repository.save(updated);
+
+        assertMatch(actualUpdated, updated);
+    }
+
+    @Test
+    public void testGet() {
         assertMatch(repository.get(MEAL1_ID), MEAL1);
     }
 
     @Test
-    public void getNotExisting() {
+    public void testGetNotExisting() {
         assertThat(repository.get(-1)).isNull();
     }
 
     @Test
-    public void getAll() {
+    public void testGetAll() {
         assertMatch(repository.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
     }
 
     @Test
-    public void delete() {
+    public void testDelete() {
         assertThat(repository.delete(MEAL1_ID)).isEqualTo(true);
         assertMatch(repository.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL3));
     }
 
     @Test
-    public void deleteNotExisting() {
+    public void testDeleteNotExisting() {
         assertThat(repository.delete(-1)).isEqualTo(false);
     }
 }

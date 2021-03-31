@@ -12,7 +12,7 @@ public class MenuMeal {
     private Meal meal;
 
     @Column(name = "price")
-    private double price;
+    private int price;
 
     public Meal getMeal() {
         return meal;
@@ -22,11 +22,11 @@ public class MenuMeal {
         this.meal = meal;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }
