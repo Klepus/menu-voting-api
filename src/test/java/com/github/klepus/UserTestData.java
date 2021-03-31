@@ -15,4 +15,8 @@ public class UserTestData {
     public static final User USER1 = new User(USER1_ID, "Ivan_user", "ivan@mail.ru", "ivan_pass", false);
     public static final User USER2 = new User(USER2_ID, "Dmitriy_user", "dmitriy@mail.ru", "dmitriy_pass", false);
     public static final User USER3 = new User(USER3_ID, "Vasya_user", "vasya@gmail.com", "vasya_pass", false);
+
+    public static User getForCreation() {
+        return new User("new_user", "test.mail@mail.ru", "pass123", false);
+    }
 }
