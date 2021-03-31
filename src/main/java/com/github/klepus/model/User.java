@@ -1,4 +1,4 @@
-package com.github.klepus.repository;
+package com.github.klepus.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

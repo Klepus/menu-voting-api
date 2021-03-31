@@ -1,4 +1,4 @@
-package com.github.klepus.repository;
+package com.github.klepus.model;
 
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
