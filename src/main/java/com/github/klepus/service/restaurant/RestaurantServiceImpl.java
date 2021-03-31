@@ -2,9 +2,9 @@ package com.github.klepus.service.restaurant;
 
 import com.github.klepus.model.Restaurant;
 import com.github.klepus.repository.CrudRestaurantRepository;
-import com.github.klepus.to.RestaurantTo;
-import com.github.klepus.to.RestaurantWithMenuMealsTo;
-import com.github.klepus.to.RestaurantWithVoteTo;
+import com.github.klepus.to.restaurant.RestaurantTo;
+import com.github.klepus.to.restaurant.RestaurantWithMenuMealsTo;
+import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 import com.github.klepus.util.RestaurantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

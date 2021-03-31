@@ -1,8 +1,11 @@
-package com.github.klepus.to;
+package com.github.klepus.to.restaurant;
 
 public class RestaurantWithVoteTo extends RestaurantTo {
 
-    private final int voteCount;
+    private int voteCount;
+
+    public RestaurantWithVoteTo() {
+    }
 
     public RestaurantWithVoteTo(int id, String name, int voteCount) {
         super(id, name);
@@ -15,7 +18,7 @@ public class RestaurantWithVoteTo extends RestaurantTo {
 
     @Override
     public String toString() {
-        return "RestaurantWithVoteTO{" +
+        return "RestaurantWithVoteTo{" +
                 "voteCount=" + voteCount +
                 "} " + super.toString();
     }

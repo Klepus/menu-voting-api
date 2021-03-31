@@ -1,9 +1,9 @@
 package com.github.klepus;
 
 import com.github.klepus.model.Restaurant;
-import com.github.klepus.to.MealWithPriceTo;
-import com.github.klepus.to.RestaurantTo;
-import com.github.klepus.to.RestaurantWithVoteTo;
+import com.github.klepus.to.meal.MealWithPriceTo;
+import com.github.klepus.to.restaurant.RestaurantTo;
+import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 
 import java.time.LocalDate;
 

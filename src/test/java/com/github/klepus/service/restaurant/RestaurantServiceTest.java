@@ -1,9 +1,9 @@
 package com.github.klepus.service.restaurant;
 
 import com.github.klepus.service.AbstractServiceTest;
-import com.github.klepus.to.RestaurantTo;
-import com.github.klepus.to.RestaurantWithMenuMealsTo;
-import com.github.klepus.to.RestaurantWithVoteTo;
+import com.github.klepus.to.restaurant.RestaurantTo;
+import com.github.klepus.to.restaurant.RestaurantWithMenuMealsTo;
+import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,7 +38,7 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     public void testGetOneWithMenuOnDate() {
         RestaurantWithMenuMealsTo oneWithMenuOnDate = service.getOneWithMenuOnDate(RESTAURANT_ID2, DATE);
-        assertMatch(oneWithMenuOnDate, RESTAURANT2_TO, "meals");
+        assertMatch(oneWithMenuOnDate, RESTAURANT2_TO, "meals", "menuId");
         assertMatchInAnyOrder(oneWithMenuOnDate.getMeals(), RESTAURANT2_MEAL1, RESTAURANT2_MEAL2);
     }
 
@@ -54,13 +54,13 @@ public class RestaurantServiceTest extends AbstractServiceTest {
         RestaurantWithMenuMealsTo restaurant_id1 = allWithMenusOnDate.get(1);
         RestaurantWithMenuMealsTo restaurant_id3 = allWithMenusOnDate.get(2);
 
-        assertMatch(restaurant_id2, RESTAURANT2_TO, "meals");
+        assertMatch(restaurant_id2, RESTAURANT2_TO, "meals", "menuId");
         assertMatchInAnyOrder(restaurant_id2.getMeals(), RESTAURANT2_MEAL1, RESTAURANT2_MEAL2);
 
-        assertMatch(restaurant_id1, RESTAURANT1_TO, "meals");
+        assertMatch(restaurant_id1, RESTAURANT1_TO, "meals", "menuId");
         assertMatchInAnyOrder(restaurant_id1.getMeals(), RESTAURANT1_MEAL1, RESTAURANT1_MEAL2);
 
-        assertMatch(restaurant_id3, RESTAURANT3_TO, "meals");
+        assertMatch(restaurant_id3, RESTAURANT3_TO, "meals", "menuId");
         assertMatch(restaurant_id3.getMeals(), new ArrayList<>());
     }
 
