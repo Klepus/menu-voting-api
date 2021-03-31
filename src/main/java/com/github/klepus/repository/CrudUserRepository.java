@@ -1,4 +1,4 @@
-package com.github.klepus.repository.user;
+package com.github.klepus.repository;
 
 import com.github.klepus.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

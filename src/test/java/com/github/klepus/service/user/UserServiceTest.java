@@ -1,7 +1,9 @@
-package com.github.klepus.repository.user;
+package com.github.klepus.service.user;
 
 import com.github.klepus.model.User;
-import com.github.klepus.repository.AbstractRepositoryTest;
+import com.github.klepus.service.AbstractServiceTest;
+import com.github.klepus.service.user.UserService;
+import com.github.klepus.util.exception.NotFoundException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,15 +11,15 @@ import static com.github.klepus.TestUtil.assertMatch;
 import static com.github.klepus.UserTestData.USER1;
 import static com.github.klepus.UserTestData.USER1_ID;
 
-public class UserRepositoryTest extends AbstractRepositoryTest {
+public class UserServiceTest extends AbstractServiceTest {
 
     @Autowired
-    private UserRepository repository;
+    private UserService service;
 
     @Test
     public void testCreate() {
         User created = new User("Новый юзер", "test.mail@mail.ru", "pass123", false);
-        User actualSaved = repository.save(created);
+        User actualSaved = service.create(created);
         created.setId(actualSaved.getId());
 
         assertMatch(actualSaved, created);
@@ -27,18 +29,24 @@ public class UserRepositoryTest extends AbstractRepositoryTest {
     public void testUpdate() {
         User updated = new User(USER1);
         updated.setPassword("new-password");
-        User actualUpdated = repository.save(updated);
+        service.update(updated);
 
-        assertMatch(actualUpdated, updated);
+        assertMatch(service.get(USER1_ID), updated);
     }
 
     @Test
     public void testGet() {
-        assertMatch(repository.get(USER1_ID), USER1);
+        assertMatch(service.get(USER1_ID), USER1);
+    }
+
+    @Test
+    public void testGetNotFound() {
+        thrown.expect(NotFoundException.class);
+        service.get(-1);
     }
 
     @Test
     public void testGetByEmail() {
-        assertMatch(repository.getByEmail(USER1.getEmail()), USER1);
+        assertMatch(service.getByEmail(USER1.getEmail()), USER1);
     }
 }

@@ -2,6 +2,7 @@ package com.github.klepus.util;
 
 
 import com.github.klepus.model.AbstractBaseEntity;
+import com.github.klepus.util.exception.NotFoundException;
 
 public class ValidationUtil {
 
@@ -23,13 +24,13 @@ public class ValidationUtil {
 
     public static void checkNotFound(boolean found, String msg) {
         if (!found) {
-            throw new IllegalArgumentException("Not found entity with " + msg);
+            throw new NotFoundException("Not found entity with " + msg);
         }
     }
 
     public static void checkNew(AbstractBaseEntity entity) {
         if (!entity.isNew()) {
-            throw new IllegalArgumentException(entity + " must be new (id=null)");
+            throw new NotFoundException(entity + " must be new (id=null)");
         }
     }
 
@@ -38,7 +39,7 @@ public class ValidationUtil {
         if (entity.isNew()) {
             entity.setId(id);
         } else if (entity.getId() != id) {
-            throw new IllegalArgumentException(entity + " must be with id=" + id);
+            throw new NotFoundException(entity + " must be with id=" + id);
         }
     }
 
