@@ -7,6 +7,11 @@ public class MenuMeal {
     public MenuMeal() {
     }
 
+    public MenuMeal(Meal meal, int price) {
+        this.meal = meal;
+        this.price = price;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meal_id")
     private Meal meal;
