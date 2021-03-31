@@ -14,16 +14,16 @@ import java.util.stream.Collectors;
 
 public class RestaurantsUtil {
 
-    public static RestaurantTo create(Restaurant restaurant) {
+    public static RestaurantTo createFromEntity(Restaurant restaurant) {
         return new RestaurantTo(restaurant.getId(), restaurant.getName());
     }
 
-    public static List<RestaurantTo> create(List<Restaurant> restaurants) {
+    public static List<RestaurantTo> createFromEntity(List<Restaurant> restaurants) {
         return restaurants.stream()
                 .map(restaurant -> new RestaurantTo(restaurant.getId(), restaurant.getName())).collect(Collectors.toList());
     }
 
-    public static RestaurantWithMenuMealsTo createWithMeals(Restaurant restaurant) {
+    public static RestaurantWithMenuMealsTo createFromEntityWithMeals(Restaurant restaurant) {
         List<MealWithPriceTo> mealList = restaurant.getMenus().stream()
                 .flatMap(menu -> menu.getMenuMeals().stream())
                 .map(menuMeal -> new MealWithPriceTo(menuMeal.getMeal().getId(), menuMeal.getMeal().getName(), menuMeal.getPrice()))
@@ -31,16 +31,16 @@ public class RestaurantsUtil {
         return new RestaurantWithMenuMealsTo(restaurant.getId(), restaurant.getName(), mealList);
     }
 
-    public static List<RestaurantWithMenuMealsTo> createWithMeals(List<Restaurant> restaurant) {
-        return restaurant.stream().map(RestaurantsUtil::createWithMeals).collect(Collectors.toList());
+    public static List<RestaurantWithMenuMealsTo> createFromEntityWithMeals(List<Restaurant> restaurant) {
+        return restaurant.stream().map(RestaurantsUtil::createFromEntityWithMeals).collect(Collectors.toList());
     }
 
-    public static RestaurantWithVoteTo createWithVote(Restaurant restaurant) {
+    public static RestaurantWithVoteTo createFromEntityWithVote(Restaurant restaurant) {
         int voteCount = restaurant.getMenus().stream().map(Menu::getVotes).mapToInt(Set::size).sum();
         return new RestaurantWithVoteTo(restaurant.getId(), restaurant.getName(), voteCount);
     }
 
-    public static List<RestaurantWithVoteTo> createWithVote(List<Restaurant> restaurants) {
-        return restaurants.stream().map(RestaurantsUtil::createWithVote).collect(Collectors.toList());
+    public static List<RestaurantWithVoteTo> createFromEntityWithVote(List<Restaurant> restaurants) {
+        return restaurants.stream().map(RestaurantsUtil::createFromEntityWithVote).collect(Collectors.toList());
     }
 }

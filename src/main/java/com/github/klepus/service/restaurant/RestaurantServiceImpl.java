@@ -38,33 +38,33 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public RestaurantTo get(int id) {
-        return RestaurantsUtil.create(checkNotFoundWithId(repository.findById(id).orElse(null), id));
+        return RestaurantsUtil.createFromEntity(checkNotFoundWithId(repository.findById(id).orElse(null), id));
     }
 
     @Override
     @Transactional(readOnly = true)
     public RestaurantWithMenuMealsTo getOneWithMenuOnDate(int id, LocalDate date) {
-        return RestaurantsUtil.createWithMeals(checkNotFoundWithId(repository.getOneWithMenuOnDate(id, date), id));
+        return RestaurantsUtil.createFromEntityWithMeals(checkNotFoundWithId(repository.getOneWithMenuOnDate(id, date), id));
     }
 
     @Override
     public RestaurantWithVoteTo getOneWithVoteOnDate(int id, LocalDate date) {
-        return RestaurantsUtil.createWithVote(checkNotFoundWithId(repository.getOneWithVoteOnDate(id, date), id));
+        return RestaurantsUtil.createFromEntityWithVote(checkNotFoundWithId(repository.getOneWithVoteOnDate(id, date), id));
     }
 
     @Override
     public List<RestaurantTo> getAll() {
-        return RestaurantsUtil.create(repository.findAll(SORT_NAME_ASC));
+        return RestaurantsUtil.createFromEntity(repository.findAll(SORT_NAME_ASC));
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<RestaurantWithMenuMealsTo> getAllWithMenusOnDate(LocalDate date) {
-        return RestaurantsUtil.createWithMeals(repository.getAllWithMenusOnDate(date, SORT_NAME_ASC));
+        return RestaurantsUtil.createFromEntityWithMeals(repository.getAllWithMenusOnDate(date, SORT_NAME_ASC));
     }
 
     @Override
     public List<RestaurantWithVoteTo> getAllWithVotesOnDate(LocalDate date) {
-        return RestaurantsUtil.createWithVote(repository.getAllWithVotesOnDate(date, SORT_NAME_ASC));
+        return RestaurantsUtil.createFromEntityWithVote(repository.getAllWithVotesOnDate(date, SORT_NAME_ASC));
     }
 }
