@@ -1,4 +1,4 @@
-package com.github.klepus.repository.meal;
+package com.github.klepus.repository;
 
 import com.github.klepus.model.Meal;
 import org.springframework.data.domain.Sort;

@@ -1,7 +1,7 @@
-package com.github.klepus.web.controller.meal;
+package com.github.klepus.web.meal;
 
 import com.github.klepus.model.Meal;
-import com.github.klepus.repository.meal.MealRepository;
+import com.github.klepus.service.meal.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,32 +19,32 @@ public class MealRestController {
     static final String REST_URL = "/rest/admin/meal";
 
     @Autowired
-    private MealRepository repository;
+    private MealService service;
 
     @GetMapping("/{id}")
     public Meal get(@PathVariable("id") int id) {
-        return repository.get(id);
+        return service.get(id);
     }
 
     @GetMapping
     public List<Meal> getAll() {
-        return repository.getAll();
+        return service.getAll();
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") int id) {
-        repository.delete(id);
+        service.delete(id);
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@RequestBody Meal meal, @PathVariable("id") int id) {
         assureIdConsistent(meal, id);
-        repository.save(meal);
+        service.update(meal);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Meal> createWithLocation(@RequestBody Meal meal) {
-        Meal created = repository.save(meal);
+        Meal created = service.create(meal);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
