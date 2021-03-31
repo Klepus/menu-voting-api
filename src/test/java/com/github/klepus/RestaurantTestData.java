@@ -20,6 +20,15 @@ public class RestaurantTestData {
     public static final Restaurant RESTAURANT2 = new Restaurant(RESTAURANT_ID2, "Китайский");
     public static final Restaurant RESTAURANT3 = new Restaurant(RESTAURANT_ID3, "Французкий");
 
+    public static Restaurant getForCreation() {
+        return new Restaurant("new_restaurant");
+    }
+
+    public static Restaurant getForUpdating() {
+        return new Restaurant(RESTAURANT_ID1, "new_restaurant_name");
+    }
+
+
     public static final RestaurantTo RESTAURANT1_TO = new RestaurantTo(RESTAURANT_ID1, "Морской");
     public static final RestaurantTo RESTAURANT2_TO = new RestaurantTo(RESTAURANT_ID2, "Китайский");
     public static final RestaurantTo RESTAURANT3_TO = new RestaurantTo(RESTAURANT_ID3, "Французкий");

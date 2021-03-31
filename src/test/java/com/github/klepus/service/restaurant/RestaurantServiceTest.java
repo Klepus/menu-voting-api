@@ -1,5 +1,6 @@
 package com.github.klepus.service.restaurant;
 
+import com.github.klepus.model.Restaurant;
 import com.github.klepus.service.AbstractServiceTest;
 import com.github.klepus.to.restaurant.RestaurantTo;
 import com.github.klepus.to.restaurant.RestaurantWithMenuMealsTo;
@@ -21,7 +22,18 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     private RestaurantService service;
 
     @Test
-    public void testSave() {
+    public void testCreate() {
+        Restaurant expected = getForCreation();
+        Restaurant actual = service.create(expected);
+        expected.setId(actual.getId());
+        assertMatch(actual, expected);
+    }
+
+    @Test
+    public void testUpdate() {
+        Restaurant expected = getForUpdating();
+        service.update(expected);
+        assertMatch(service.get(expected.getId()), expected);
     }
 
     @Test

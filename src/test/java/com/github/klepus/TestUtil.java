@@ -1,10 +1,12 @@
 package com.github.klepus;
 
+import com.github.klepus.to.meal.MealWithPriceTo;
 import com.github.klepus.web.json.JsonUtil;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
 
 import static com.github.klepus.web.json.JsonUtil.writeValue;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,5 +44,9 @@ public class TestUtil {
 
     public static <T> ResultMatcher contentJsonArray(T... expected) {
         return contentJson(expected);
+    }
+
+    public static MealWithPriceTo[] getMealArrayFromCollection(Collection<MealWithPriceTo> collection) {
+        return collection.toArray(new MealWithPriceTo[collection.size()]);
     }
 }

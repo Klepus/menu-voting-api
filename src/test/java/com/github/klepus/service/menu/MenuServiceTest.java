@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.github.klepus.MenuTestData.*;
 import static com.github.klepus.RestaurantTestData.*;
-import static com.github.klepus.TestUtil.assertMatch;
+import static com.github.klepus.TestUtil.*;
 
 
 public class MenuServiceTest extends AbstractServiceTest {
@@ -28,8 +28,7 @@ public class MenuServiceTest extends AbstractServiceTest {
         RestaurantWithMenuMealsTo restaurant = restaurantService.getOneWithMenuOnDate(RESTAURANT_ID3, DATE);
 
         assertMatch(restaurant.getMenuId(), menuTo.getId());
-        assertMatch(restaurant.getMeals(), menuTo.getMeals());
-    }
+        assertMatchInAnyOrder(restaurant.getMeals(), getMealArrayFromCollection(menuTo.getMeals()));    }
 
     @Test
     public void testUpdate() {
@@ -40,7 +39,7 @@ public class MenuServiceTest extends AbstractServiceTest {
 
         assertMatch(restaurant.getId(), menuTo.getRestaurantId());
         assertMatch(restaurant.getMenuId(), menuTo.getId());
-        assertMatch(restaurant.getMeals(), menuTo.getMeals());
+        assertMatchInAnyOrder(restaurant.getMeals(), getMealArrayFromCollection(menuTo.getMeals()));
     }
 
     @Test
