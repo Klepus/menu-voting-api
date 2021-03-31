@@ -20,8 +20,20 @@ public class RestaurantWithMenuMealsTo extends RestaurantTo {
         this.meals = Collections.unmodifiableList(meals);
     }
 
+    public Integer getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
+    }
+
     public List<MealWithPriceTo> getMeals() {
         return meals;
+    }
+
+    public void setMeals(List<MealWithPriceTo> meals) {
+        this.meals = meals;
     }
 
     @Override

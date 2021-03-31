@@ -31,9 +31,9 @@ public class MenuServiceImpl implements MenuService {
     private CrudMealRepository mealRepository;
 
     @Override
-    public void create(MenuTo menuTo) {
+    public Menu create(MenuTo menuTo) {
         Assert.notNull(menuTo, "menuTo must not be null");
-        menuRepository.save(getForCreation(menuTo));
+        return menuRepository.save(getForCreation(menuTo));
     }
 
     @Override
