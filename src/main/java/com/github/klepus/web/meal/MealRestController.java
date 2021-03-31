@@ -16,7 +16,7 @@ import static com.github.klepus.util.ValidationUtil.assureIdConsistent;
 @RestController
 @RequestMapping(value = MealRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
-    static final String REST_URL = "/rest/admin/meal";
+    static final String REST_URL = "/rest/meal";
 
     @Autowired
     private MealService service;
