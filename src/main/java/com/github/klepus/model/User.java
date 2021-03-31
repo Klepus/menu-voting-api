@@ -38,6 +38,10 @@ public class User extends AbstractNamedEntity {
         this.privileged = privileged;
     }
 
+    public User(User user) {
+        this(user.id, user.name, user.email, user.password, user.privileged);
+    }
+
     public String getEmail() {
         return email;
     }
