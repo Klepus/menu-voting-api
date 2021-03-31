@@ -19,6 +19,10 @@ public class TestUtil {
         assertThat(actual).usingElementComparatorIgnoringFields(ignoredFields).isEqualTo(expected);
     }
 
+    public static <T> void assertMatchInAnyOrder(Iterable<T> actual, T... expected) {
+        assertThat(actual).containsExactlyInAnyOrder(expected);
+    }
+
     public static String getContent(ResultActions action) throws UnsupportedEncodingException {
         return action.andReturn().getResponse().getContentAsString();
     }
