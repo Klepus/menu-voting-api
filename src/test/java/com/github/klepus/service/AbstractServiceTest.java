@@ -1,5 +1,6 @@
 package com.github.klepus.service;
 
+import com.github.klepus.repository.JpaUtil;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -24,9 +25,13 @@ public abstract class AbstractServiceTest {
     @Autowired
     private CacheManager cacheManager;
 
+    @Autowired
+    private JpaUtil jpaUtil;
+
     @Before
     public void setUp() throws Exception {
         cacheManager.getCache("restaurantsWithMenu").clear();
+        jpaUtil.clear2ndLevelHibernateCache();
     }
 }
 

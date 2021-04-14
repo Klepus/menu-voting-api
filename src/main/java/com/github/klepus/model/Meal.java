@@ -1,6 +1,8 @@
 package com.github.klepus.model;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "meals")
 @BatchSize(size = 20)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "meal")
 public class Meal extends AbstractNamedEntity {
     public Meal() {
     }
