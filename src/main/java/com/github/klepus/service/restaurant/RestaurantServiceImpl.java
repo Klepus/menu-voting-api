@@ -7,6 +7,8 @@ import com.github.klepus.to.restaurant.RestaurantWithMenuMealsTo;
 import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 import com.github.klepus.util.RestaurantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,12 +28,14 @@ public class RestaurantServiceImpl implements RestaurantService {
     private CrudRestaurantRepository repository;
 
     @Override
+    @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
     public Restaurant create(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
         return repository.save(restaurant);
     }
 
     @Override
+    @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
     public void update(Restaurant restaurant) {
         checkNotFoundWithId(repository.save(restaurant), restaurant.getId());
     }
@@ -59,6 +63,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable("restaurantsWithMenu")
     public List<RestaurantWithMenuMealsTo> getAllWithMenusOnDate(LocalDate date) {
         return RestaurantsUtil.createFromEntityWithMeals(repository.getAllWithMenusOnDate(date, SORT_NAME_ASC));
     }
