@@ -61,7 +61,7 @@ public class RestaurantRestController {
     @PostMapping(path = "/menu/{menuId}/voting")
     public void makeVote(@PathVariable("menuId") int menuId) {
         if (LocalTime.now().compareTo(VOTE_ACCEPTED_TIME_TO) < 0) {
-            menuService.makeVote(menuId, AuthorizedUser.getId(), LocalDate.now());
+            menuService.makeVote(menuId, AuthorizedUser.id(), LocalDate.now());
         } else {
             throw new VotingException("voting accepted only to 11:00:00");
         }

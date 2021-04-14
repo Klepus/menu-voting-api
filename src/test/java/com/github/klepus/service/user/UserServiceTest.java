@@ -20,12 +20,12 @@ public class UserServiceTest extends AbstractServiceTest {
         User actualSaved = service.create(created);
         created.setId(actualSaved.getId());
 
-        assertMatch(actualSaved, created);
+        assertMatch(actualSaved, created, "password");
     }
 
     @Test
     public void testGet() {
-        assertMatch(service.get(USER1_ID), USER1);
+        assertMatch(service.get(USER1_ID), USER1, "password");
     }
 
     @Test
@@ -36,6 +36,6 @@ public class UserServiceTest extends AbstractServiceTest {
 
     @Test
     public void testGetByEmail() {
-        assertMatch(service.getByEmail(USER1.getEmail()), USER1);
+        assertMatch(service.getByEmail(USER1.getEmail()), USER1, "password");
     }
 }

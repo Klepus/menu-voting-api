@@ -20,7 +20,7 @@ public class MealServiceTest extends AbstractServiceTest {
     public void testCreate() {
         Meal created = service.create(new Meal("ааа"));
         assertMatch(created, service.get(created.getId()));
-        assertMatch(service.getAll(), Arrays.asList(created, MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
+        assertMatch(service.getAll(), Arrays.asList(created, MEAL1, MEAL2, MEAL3, MEAL4, MEAL5, MEAL6));
     }
 
     @Test
@@ -45,13 +45,13 @@ public class MealServiceTest extends AbstractServiceTest {
 
     @Test
     public void testGetAll() {
-        assertMatch(service.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
+        assertMatch(service.getAll(), Arrays.asList(MEAL1, MEAL2, MEAL3, MEAL4, MEAL5, MEAL6));
     }
 
     @Test
     public void testDelete() {
         service.delete(MEAL1_ID);
-        assertMatch(service.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL3));
+        assertMatch(service.getAll(), Arrays.asList(MEAL2, MEAL3, MEAL4, MEAL5, MEAL6));
     }
 
     @Test

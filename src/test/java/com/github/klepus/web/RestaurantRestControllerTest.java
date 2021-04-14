@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.github.klepus.RestaurantTestData.*;
 import static com.github.klepus.TestUtil.contentJson;
+import static com.github.klepus.TestUtil.userHttpBasic;
+import static com.github.klepus.UserTestData.USER1;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -22,7 +24,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGet() throws Exception {
-        mockMvc.perform(get(REST_URL + RESTAURANT_ID1))
+        mockMvc.perform(get(REST_URL + RESTAURANT_ID1)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
@@ -31,7 +34,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetOneWithMeals() throws Exception {
-        mockMvc.perform(get(REST_URL + RESTAURANT_ID1 + "/menu").param("date", DATE_STR))
+        mockMvc.perform(get(REST_URL + RESTAURANT_ID1 + "/menu").param("date", DATE_STR)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
@@ -40,7 +44,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetOneWithVote() throws Exception {
-        mockMvc.perform(get(REST_URL + RESTAURANT_ID1 + "/vote").param("date", DATE_STR))
+        mockMvc.perform(get(REST_URL + RESTAURANT_ID1 + "/vote").param("date", DATE_STR)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
@@ -49,7 +54,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetAllWithMeals() throws Exception {
-        mockMvc.perform(get(REST_URL + "menu").param("date", DATE_STR))
+        mockMvc.perform(get(REST_URL + "menu").param("date", DATE_STR)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
@@ -58,7 +64,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetAllWithVote() throws Exception {
-        mockMvc.perform(get(REST_URL + "vote").param("date", DATE_STR))
+        mockMvc.perform(get(REST_URL + "vote").param("date", DATE_STR)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))
@@ -67,7 +74,8 @@ public class RestaurantRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetAll() throws Exception {
-        mockMvc.perform(get(REST_URL))
+        mockMvc.perform(get(REST_URL)
+                .with(userHttpBasic(USER1)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON))

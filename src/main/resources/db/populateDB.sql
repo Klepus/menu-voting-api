@@ -6,30 +6,30 @@ DELETE FROM USERS;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO USERS (NAME, EMAIL, PASSWORD, PRIVILEGED) VALUES
-  ('Petr_admin', 'petr@gmail.com', 'petr_pass', TRUE),        -- 100000
-  ('Ivan_user', 'ivan@mail.ru', 'ivan_pass', FALSE),          -- 100001
-  ('Dmitriy_user', 'dmitriy@mail.ru', 'dmitriy_pass', FALSE), -- 100002
-  ('Vasya_user', 'vasya@gmail.com', 'vasya_pass', FALSE);     -- 100003
+  ('admin', 'admin@gmail.com', '{noop}admin', TRUE),        -- 100000
+  ('user_1', 'user_1@gmail.com', '{noop}user_1', FALSE),          -- 100001
+  ('user_2', 'user_2@gmail.com', '{noop}user_1', FALSE), -- 100002
+  ('user_3', 'user_3@gmail.com', '{noop}user_1', FALSE);     -- 100003
 
 INSERT INTO MEALS (NAME) VALUES
-  ('хлеб'),   -- 100004
-  ('вода'),   -- 100005
-  ('чай'),    -- 100006
-  ('сок'),    -- 100007
-  ('мясо'),   -- 100008
-  ('масло');  -- 100009
+  ('еда_1'),   -- 100004
+  ('еда_2'),   -- 100005
+  ('еда_3'),    -- 100006
+  ('еда_4'),    -- 100007
+  ('еда_5'),   -- 100008
+  ('еда_6');  -- 100009
 
 INSERT INTO RESTAURANTS (NAME) VALUES
-  ('Морской'),    -- 100010
-  ('Китайский'),  -- 100011
-  ('Французкий');  -- 100012
+  ('ресторан_1'),    -- 100010
+  ('ресторан_2'),  -- 100011
+  ('ресторан_3');  -- 100012
 
 INSERT INTO MENUS (RESTAURANT_ID, DATE) VALUES
-  (100010, '2018-01-01'), -- 100013
-  (100010, '2018-01-02'), -- 100014
-  (100011, '2018-01-01'), -- 100015
-  (100011, '2018-01-02'), -- 100016
-  (100012, '2018-01-02'); -- 100017
+  (100010, '2021-01-01'), -- 100013
+  (100010, '2021-01-02'), -- 100014
+  (100011, '2021-01-01'), -- 100015
+  (100011, '2021-01-02'), -- 100016
+  (100012, '2021-01-02'); -- 100017
 
 INSERT INTO MENU_MEALS(MENU_ID, MEAL_ID, PRICE) VALUES
   (100013, 100004, 100),

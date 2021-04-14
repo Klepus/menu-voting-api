@@ -44,7 +44,7 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     public void testGetAll() {
         List<RestaurantTo> all = service.getAll();
-        assertMatch(service.getAll(), Arrays.asList(RESTAURANT2_TO, RESTAURANT1_TO, RESTAURANT3_TO));
+        assertMatch(service.getAll(), Arrays.asList(RESTAURANT1_TO, RESTAURANT2_TO, RESTAURANT3_TO));
     }
 
     @Test
@@ -62,8 +62,8 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     public void testGetAllWithMenusOnDate() {
         List<RestaurantWithMenuMealsTo> allWithMenusOnDate = service.getAllWithMenusOnDate(DATE);
-        RestaurantWithMenuMealsTo restaurant_id2 = allWithMenusOnDate.get(0);
-        RestaurantWithMenuMealsTo restaurant_id1 = allWithMenusOnDate.get(1);
+        RestaurantWithMenuMealsTo restaurant_id1 = allWithMenusOnDate.get(0);
+        RestaurantWithMenuMealsTo restaurant_id2 = allWithMenusOnDate.get(1);
         RestaurantWithMenuMealsTo restaurant_id3 = allWithMenusOnDate.get(2);
 
         assertMatch(restaurant_id2, RESTAURANT2_TO, "meals", "menuId");
@@ -79,6 +79,6 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     @Test
     public void testGetAllWithVotesOnDate() {
         List<RestaurantWithVoteTo> allWithVotesOnDate = service.getAllWithVotesOnDate(DATE);
-        assertMatch(allWithVotesOnDate, Arrays.asList(RESTAURANT2_VOTE, RESTAURANT1_VOTE, RESTAURANT3_VOTE));
+        assertMatch(allWithVotesOnDate, Arrays.asList(RESTAURANT1_VOTE, RESTAURANT2_VOTE, RESTAURANT3_VOTE));
     }
 }

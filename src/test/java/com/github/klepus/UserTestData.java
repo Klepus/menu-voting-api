@@ -11,12 +11,12 @@ public class UserTestData {
     public static final int USER2_ID = START_SEQ + 2;
     public static final int USER3_ID = START_SEQ + 3;
 
-    public static final User ADMIN = new User(ADMIN_ID, "Petr_admin", "petr@gmail.com", "petr_pass", true);
-    public static final User USER1 = new User(USER1_ID, "Ivan_user", "ivan@mail.ru", "ivan_pass", false);
-    public static final User USER2 = new User(USER2_ID, "Dmitriy_user", "dmitriy@mail.ru", "dmitriy_pass", false);
-    public static final User USER3 = new User(USER3_ID, "Vasya_user", "vasya@gmail.com", "vasya_pass", false);
+    public static final User ADMIN = new User(ADMIN_ID, "admin", "admin@gmail.com", "admin", true);
+    public static final User USER1 = new User(USER1_ID, "user_1", "user_1@gmail.com", "user_1", false);
+    public static final User USER2 = new User(USER2_ID, "user_2", "user_2@gmail.com", "user_2", false);
+    public static final User USER3 = new User(USER3_ID, "user_3", "user_3@gmail.com", "user_3", false);
 
     public static User getForCreation() {
-        return new User("new_user", "test.mail@mail.ru", "pass123", false);
+        return new User("new_user", "new_user@gmail.com", "new_user", false);
     }
 }

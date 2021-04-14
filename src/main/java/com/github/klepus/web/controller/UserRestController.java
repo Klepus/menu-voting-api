@@ -17,7 +17,7 @@ public class UserRestController {
     @Autowired
     private UserService service;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/registration", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody User user) {
         service.create(user);
     }

@@ -24,7 +24,7 @@ public class UserRestControllerTest extends AbstractControllerTest {
     @Test
     public void testCreate() throws Exception {
         User expected = getForCreation();
-        mockMvc.perform(post(REST_URL)
+        mockMvc.perform(post(REST_URL + "registration")
                 .contentType(APPLICATION_JSON)
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isOk())
@@ -32,6 +32,6 @@ public class UserRestControllerTest extends AbstractControllerTest {
 
         User actual = service.getByEmail(expected.getEmail());
         actual.setId(expected.getId());
-        TestUtil.assertMatch(actual, expected);
+        TestUtil.assertMatch(actual, expected, "password");
     }
 }

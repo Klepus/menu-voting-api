@@ -13,10 +13,10 @@ public class MealTestData {
     public static final int MEAL5_ID = START_SEQ + 8;
     public static final int MEAL6_ID = START_SEQ + 9;
 
-    public static final Meal MEAL1 = new Meal(MEAL1_ID, "хлеб");
-    public static final Meal MEAL2 = new Meal(MEAL2_ID, "вода");
-    public static final Meal MEAL3 = new Meal(MEAL3_ID, "чай");
-    public static final Meal MEAL4 = new Meal(MEAL4_ID, "сок");
-    public static final Meal MEAL5 = new Meal(MEAL5_ID, "мясо");
-    public static final Meal MEAL6 = new Meal(MEAL6_ID, "масло");
+    public static final Meal MEAL1 = new Meal(MEAL1_ID, "еда_1");
+    public static final Meal MEAL2 = new Meal(MEAL2_ID, "еда_2");
+    public static final Meal MEAL3 = new Meal(MEAL3_ID, "еда_3");
+    public static final Meal MEAL4 = new Meal(MEAL4_ID, "еда_4");
+    public static final Meal MEAL5 = new Meal(MEAL5_ID, "еда_5");
+    public static final Meal MEAL6 = new Meal(MEAL6_ID, "еда_6");
 }
