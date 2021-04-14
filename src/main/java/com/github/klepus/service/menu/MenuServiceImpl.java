@@ -7,6 +7,7 @@ import com.github.klepus.repository.CrudMenuRepository;
 import com.github.klepus.repository.CrudRestaurantRepository;
 import com.github.klepus.to.menu.MenuTo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -31,12 +32,14 @@ public class MenuServiceImpl implements MenuService {
     private CrudMealRepository mealRepository;
 
     @Override
+    @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
     public Menu create(MenuTo menuTo) {
         Assert.notNull(menuTo, "menuTo must not be null");
         return menuRepository.save(getForCreation(menuTo));
     }
 
     @Override
+    @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
     public void update(MenuTo menuTo) {
         checkNotFoundWithId(menuRepository.save(getForUpdate(menuTo)), menuTo.getId());
     }
