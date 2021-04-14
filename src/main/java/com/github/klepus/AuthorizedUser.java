@@ -1,6 +1,5 @@
 package com.github.klepus;
 
-import com.github.klepus.model.AbstractBaseEntity;
 import com.github.klepus.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

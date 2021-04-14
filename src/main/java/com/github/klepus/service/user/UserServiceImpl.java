@@ -5,7 +5,6 @@ import com.github.klepus.model.User;
 import com.github.klepus.repository.CrudUserRepository;
 import com.github.klepus.util.UserUtil;
 import com.github.klepus.util.exception.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,11 +18,14 @@ import static com.github.klepus.util.ValidationUtil.*;
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    @Autowired
-    private CrudUserRepository repository;
+    private final CrudUserRepository repository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(CrudUserRepository repository, PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public User create(User user) {

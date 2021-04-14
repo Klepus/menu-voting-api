@@ -3,7 +3,6 @@ package com.github.klepus.service.meal;
 import com.github.klepus.model.Meal;
 import com.github.klepus.repository.CrudMealRepository;
 import com.github.klepus.util.exception.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -18,8 +17,11 @@ public class MealServiceImpl implements MealService {
 
     private static final Sort SORT_NAME_ASC = Sort.by("name");
 
-    @Autowired
-    private CrudMealRepository repository;
+    private final CrudMealRepository repository;
+
+    public MealServiceImpl(CrudMealRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Meal create(Meal meal) {

@@ -6,7 +6,6 @@ import com.github.klepus.repository.CrudMealRepository;
 import com.github.klepus.repository.CrudMenuRepository;
 import com.github.klepus.repository.CrudRestaurantRepository;
 import com.github.klepus.to.menu.MenuTo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -22,14 +21,17 @@ import static com.github.klepus.util.ValidationUtil.checkNotFoundWithId;
 @Service
 public class MenuServiceImpl implements MenuService {
 
-    @Autowired
-    private CrudMenuRepository menuRepository;
+    private final CrudMenuRepository menuRepository;
 
-    @Autowired
-    private CrudRestaurantRepository restaurantRepository;
+    private final CrudRestaurantRepository restaurantRepository;
 
-    @Autowired
-    private CrudMealRepository mealRepository;
+    private final CrudMealRepository mealRepository;
+
+    public MenuServiceImpl(CrudMenuRepository menuRepository, CrudRestaurantRepository restaurantRepository, CrudMealRepository mealRepository) {
+        this.menuRepository = menuRepository;
+        this.restaurantRepository = restaurantRepository;
+        this.mealRepository = mealRepository;
+    }
 
     @Override
     @CacheEvict(value = "restaurantsWithMenu", allEntries = true)

@@ -6,7 +6,6 @@ import com.github.klepus.to.restaurant.RestaurantTo;
 import com.github.klepus.to.restaurant.RestaurantWithMenuMealsTo;
 import com.github.klepus.to.restaurant.RestaurantWithVoteTo;
 import com.github.klepus.util.RestaurantsUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
@@ -24,8 +23,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     private static final Sort SORT_NAME_ASC = Sort.by("name");
 
-    @Autowired
-    private CrudRestaurantRepository repository;
+    private final CrudRestaurantRepository repository;
+
+    public RestaurantServiceImpl(CrudRestaurantRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
